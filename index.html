@@ -499,12 +499,13 @@
     </section>
 
 <section id="products">
-    <h2 class="section-title">Наша продукция</h2>
-    <div class="products-grid">
+        <h2 class="section-title">Наша продукция</h2>
+        <div class="products-grid">
         <div class="product-card">
-            <img src="images/forel.jpg" alt="Форель" class="product-image" />
-            <div class="product-info">
-                <h3>Форель "Сибирская нежность"</h3>
+            <div class="product-card">
+                <div class="product-image" style="background: url('images/forel.jpg') center/cover;"></div>
+                <div class="product-info">
+                    <h3>Форель "Сибирская нежность"</h3>
                 <p><strong>Особенности:</strong></p>
                 <ul class="product-features">
                     <li>Мясо с нежной текстурой и розоватым оттенком</li>
@@ -519,23 +520,23 @@
             </div>
         </div>
         <div class="product-card">
-            <img src="images/osetr.jpg" alt="Осётр" class="product-image" />
-            <div class="product-info">
-                <h3>Осётр</h3>
+                <div class="product-image" style="background: url('images/osetr.jpg') center/cover;"></div>
+                <div class="product-info">
+                    <h3>Осётр</h3>
                 <p>Формы поставки: охлаждённая, свежемороженая (шоковая заморозка)</p>
             </div>
         </div>
         <div class="product-card">
-            <img src="images/karp.jpg" alt="Карп" class="product-image" />
-            <div class="product-info">
-                <h3>Карп</h3>
+                <div class="product-image" style="background: url('images/karp.jpg') center/cover;"></div>
+                <div class="product-info">
+                    <h3>Карп</h3>
                 <p>Формы поставки: охлаждённая, свежемороженая, живая рыба</p>
             </div>
         </div>
-        <div class="product-card">
-            <img src="images/tolstolobik.jpg" alt="Толстолобик" class="product-image" />
-            <div class="product-info">
-                <h3>Толстолобик</h3>
+       <div class="product-card">
+                <div class="product-image" style="background: url('images/tolstolobik.jpg') center/cover;"></div>
+                <div class="product-info">
+                    <h3>Толстолобик</h3>
                 <p>Формы поставки: охлаждённая, свежемороженая</p>
             </div>
         </div>
@@ -675,18 +676,46 @@
         </div>
     </footer>
 
-    <script>
+  <script>
+        // Улучшенная обработка формы
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const phone = document.getElementById('phone').value;
+            
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || name.length < 2) {
+                alert('Пожалуйста, введите корректное имя');
+                return;
+            }
             
             if (!/^[\d\+]{7,15}$/.test(phone)) {
                 alert('Пожалуйста, введите корректный номер телефона');
                 return;
             }
             
+            if (!message) {
+                alert('Пожалуйста, укажите интересующую продукцию');
+                return;
+            }
+            
+            // Здесь должна быть реальная отправка данных
+            // Например, через Formspree или AJAX
             alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
             this.reset();
+        });
+        
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
