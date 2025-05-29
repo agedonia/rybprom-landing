@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <title>ООО "РыбПром" | Садковое рыбоводство в Красноярском крае</title>
     <style>
         :root {
@@ -408,7 +409,32 @@
             padding-top: 15px;
             border-top: 1px solid rgba(255,255,255,0.2);
         }
-        
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #555; /* или другой цвет */
+            color: #fff;
+            font-size: 1.5em;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background-color: #333;
+            transform: scale(1.1);
+        }
         @media (max-width: 768px) {
             .about-content,
             .contact-wrapper {
@@ -638,13 +664,23 @@
             <div class="contact-info">
                 <h3>Контакты</h3>
                 <p>📍 Красноярский край, Шарыповский район, Берёзовское водохранилище</p>
+                <p>📞 +7 (950) 998-85-32</p>
                 <p>📞 +7 (906) 974-16-92</p>
                 <p>✉️ info@rybprom.ru</p>
                 <p>🕒 Пн-Пт: 9:00-18:00</p>
                 
                 <div class="social-links">
-                    <a href="#" class="social-icon">VK</a>
-                    <a href="#" class="social-icon">TG</a>
+                    <a href="https://vk.com/ваш_аккаунт" class="social-icon" target="_blank" aria-label="VK">
+                         <i class="fab fa-vk"></i>
+                    </a>
+                    <a href="https://t.me/ваш_канал" class="social-icon" target="_blank" aria-label="Telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                    <a href="https://wa.me/ваш_номер" class="social-icon" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://vk.com/rybprom" class="social-icon">VK</a>
+                    <a href="https://t.me/ribasharypovo" class="social-icon">TG</a>
                     <a href="#" class="social-icon">WA</a>
                 </div>
             </div>
