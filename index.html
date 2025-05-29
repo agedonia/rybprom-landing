@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООО "РыбПром" | Садковое рыбоводство в Красноярском крае</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #e6f0ff;
+            --accent: #ff6b00;
+            --text: #333;
+            --light: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: var(--primary);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            color: var(--light);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        #hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.9)), url('https://via.placeholder.com/1920x800') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            color: var(--light);
+        }
+        
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        #hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background: var(--accent);
+            color: var(--light);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #e05a00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        section {
+            padding: 5rem 10%;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        #about {
+            background: var(--secondary);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        #contact {
+            background: var(--secondary);
+        }
+        
+        .contact-wrapper {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        footer {
+            background: var(--primary);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature-box {
+            background: rgba(255,255,255,0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .highlight {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .development-plans {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        
+        .development-plans ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        .development-plans li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            text-align: right;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        
+        .icon {
+            margin-right: 10px;
+        }
+        
+        .media-coverage {
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 2rem;
+        }
+        
+        .media-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-top: 1rem;
+        }
+        
+        .media-source {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .media-date {
+            color: var(--primary);
+            font-weight: 500;
+            margin: 0.5rem 0;
+        }
+        
+        .media-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--primary);
+            transition: 0.3s;
+        }
+        
+        .media-link:hover {
+            border-bottom-style: solid;
+            color: var(--accent);
+        }
+        
+        #gastronomy {
+            background: linear-gradient(to bottom, #f8fbff, #e6f0ff);
+        }
+        
+        .gastronomy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gastronomy-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .gastronomy-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .article-reference {
+            margin-top: 2rem;
+            text-align: center;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .product-features {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .product-features li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .product-features li:before {
+            content: "✓";
+            color: var(--accent);
+            position: absolute;
+            left: -20px;
+        }
+        
+        .expert-opinion {
+            background: rgba(0, 86, 179, 0.05);
+            border-left: 3px solid var(--primary);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .source-link {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .official-partners {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .about-content,
+            .contact-wrapper {
+                flex-direction: column;
+            }
+            
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">РыбПром</div>
+        <nav>
+            <ul>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#products">Продукция</a></li>
+                <li><a href="#gastronomy">Преимущества</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>Свежая рыба с чистых водоемов Сибири</h1>
+        <p>ООО «РыбПром» — современное садковое хозяйство в Красноярском крае с производственной мощностью 100 тонн в год</p>
+        <a href="#contact" class="cta-button">Заказать рыбу</a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Сибирская альтернатива импортной рыбе</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <div class="feature-box">
+                    <h3><i class="icon">🐟</i> Наша форель — сибирский ответ Норвегии</h3>
+                    <p><strong>18 февраля 2015 года</strong> стало отправной точкой нового этапа. Когда норвежская форель попала под запрет, мы предложили достойную альтернативу — выращенную в чистейшей воде Березовского водохранилища.</p>
+                    
+                    <div class="highlight">
+                        <p>Радужная форель родом из Северной Америки, адаптированная к сибирским условиям ещё в 1960-х, у нас выращивается с 2013 года. Из малька весом 400 граммов за 3-4 месяца она превращается в полуметровую особь весом 1.5-2 кг!</p>
+                    </div>
+                </div>
+
+                <p>Основанное в 2010 году на берегу Берёзовского водохранилища в Шарыповском районе, наше хозяйство прошло модернизацию в 2014 году и сегодня является одним из лидеров садкового рыбоводства в Сибири.</p>
+                <p>Мы осуществляем <strong>полный цикл выращивания</strong> - от икринки до товарной рыбы, что гарантирует контроль качества на каждом этапе. Вся продукция сертифицирована и соответствует ГОСТам.</p>
+                <p>На современных складских комплексах мы обеспечиваем идеальные условия хранения и оперативную логистику по всему Красноярскому краю и за его пределами.</p>
+                
+                <div class="feature-box" style="margin-top: 1.5rem;">
+                    <h3><i class="icon">🔬</i> Эксперименты с осетром</h3>
+                    <p>Наши новации: при поддержании температуры воды +15°C осётр быстро набирает вес. Уже в 2015 году мы произвели пробную партию в 5 тонн этой ценной рыбы.</p>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://via.placeholder.com/600x400" alt="Выращивание форели в садках">
+            </div>
+        </div>
+        
+        <div class="development-plans">
+            <h3><i class="icon">🚀</i> Наши перспективы</h3>
+            <ul>
+                <li>Использование 200+ озёр Шарыповского района</li>
+                <li>Строительство комплекса по выращиванию мальков</li>
+                <li>Запуск цеха переработки рыбы</li>
+                <li>Участие в государственной программе развития аквакультур</li>
+            </ul>
+            <p class="quote">"Поддержка районной власти помогает нам развивать сибирское рыбоводство!"</p>
+        </div>
+        
+        <div class="media-coverage">
+            <h3><i class="icon">📰</i> О нас пишут</h3>
+            <div class="media-card">
+                <div class="media-source">
+                    <span>Администрация Шарыповского района</span>
+                </div>
+                <h4>Наша альтернатива норвежской форели</h4>
+                <p class="media-date">18 февраля 2015</p>
+                <p>"Сибирская альтернатива попавшей под запрет норвежской форели — форель, выращенная в садках на водохранилище Берёзовской ГРЭС..."</p>
+                <a href="https://www.asdg.ru/sections/gu/novosti.php?ELEMENT_ID=13040&SECTION_ID=" target="_blank" class="media-link">
+                    Читать оригинал статьи →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <h2 class="section-title">Наша продукция</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image" style="background-color: #e3f2fd;">ФОТО ФОРЕЛИ</div>
+                <div class="product-info">
+                    <h3>Форель "Сибирская нежность"</h3>
+                    <p><strong>Особенности:</strong></p>
+                    <ul class="product-features">
+                        <li>Мясо с нежной текстурой и розоватым оттенком</li>
+                        <li>Отсутствие речного привкуса благодаря чистой воде</li>
+                        <li>Специальный рацион с натуральными каротиноидами</li>
+                        <li>От вылова до покупателя - всего несколько часов</li>
+                    </ul>
+                    <div class="expert-opinion">
+                        <p>"Сибирская форель отличается особой нежностью мяса благодаря чистой воде и специальному рациону" - Городские Новости Красноярска</p>
+                        <a href="https://gnkk.ru/articles/foreli-nezhnosti/" target="_blank">Читать статью</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-color: #e8f5e9;">ФОТО ОСЕТРА</div>
+                <div class="product-info">
+                    <h3>Осётр</h3>
+                    <p>Формы поставки: охлаждённая, свежемороженая (шоковая заморозка)</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-color: #fff3e0;">ФОТО КАРПА</div>
+                <div class="product-info">
+                    <h3>Карп</h3>
+                    <p>Формы поставки: охлаждённая, свежемороженая, живая рыба</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-color: #fbe9e7;">ФОТО ТОЛСТОЛОБИКА</div>
+                <div class="product-info">
+                    <h3>Толстолобик</h3>
+                    <p>Формы поставки: охлаждённая, свежемороженая</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gastronomy">
+        <h2 class="section-title">Вкусовые преимущества</h2>
+        <div class="gastronomy-grid">
+            <div class="gastronomy-card">
+                <h3>Нежная текстура</h3>
+                <p>Благодаря чистой воде и особым условиям выращивания наша форель имеет особенно нежную консистенцию</p>
+            </div>
+            <div class="gastronomy-card">
+                <h3>Чистый вкус</h3>
+                <p>Отсутствие речного привкуса - отличие нашей продукции от речной рыбы</p>
+            </div>
+            <div class="gastronomy-card">
+                <h3>Аппетитный цвет</h3>
+                <p>Натуральный розоватый оттенок мяса благодаря специальному рациону</p>
+            </div>
+            <div class="gastronomy-card">
+                <h3>Свежесть</h3>
+                <p>От вылова до прилавка - всего несколько часов, что невозможно при импорте</p>
+            </div>
+        </div>
+        <div class="article-reference">
+            <p>По материалам статьи <a href="https://gnkk.ru/articles/foreli-nezhnosti/" target="_blank">"Форели нежности"</a> (Городские Новости Красноярска)</p>
+        </div>
+    </section>
+
+    <section id="advantages">
+        <h2 class="section-title">Наши преимущества</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>🔬 Контроль качества</h3>
+                    <p>Многоуровневая система проверки на всех этапах производства</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>🚚 Современная логистика</h3>
+                    <p>Собственные холодильные комплексы и транспорт</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>🌿 Экологичность</h3>
+                    <p>Чистые воды Березовского водохранилища</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>🏭 Полный цикл</h3>
+                    <p>От икринки до товарной рыбы на одной территории</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>📢 Признание СМИ</h3>
+                    <p>Отмечены администрацией района как перспективное предприятие</p>
+                    <a href="https://www.asdg.ru/sections/gu/novosti.php?ELEMENT_ID=13040&SECTION_ID=" 
+                       target="_blank"
+                       style="font-size:0.9rem;margin-top:10px;display:block">
+                        Читать на сайте администрации
+                    </a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>🔬 Уникальные технологии</h3>
+                    <p>Как мы достигаем премиального качества:</p>
+                    <ul>
+                        <li>Специальные корма с натуральными добавками</li>
+                        <li>Постоянный контроль температуры воды</li>
+                        <li>Оптимальная плотность посадки рыбы</li>
+                        <li>Шоковая заморозка для сохранения свежести</li>
+                    </ul>
+                    <div class="source-link">
+                        <a href="https://gnkk.ru/articles/foreli-nezhnosti/" target="_blank">
+                            Подробнее в статье "Форели нежности"
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Сделайте заказ</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Контакты</h3>
+                <p>📍 Красноярский край, Шарыповский район, Берёзовское водохранилище</p>
+                <p>📞 +7 (XXX) XXX-XX-XX</p>
+                <p>✉️ info@rybprom.ru</p>
+                <p>🕒 Пн-Пт: 9:00-18:00</p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-icon">VK</a>
+                    <a href="#" class="social-icon">TG</a>
+                    <a href="#" class="social-icon">WA</a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Оставьте заявку</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Интересующая продукция</label>
+                        <textarea id="message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2023 ООО "РыбПром". Садковое рыбоводное хозяйство в Красноярском крае</p>
+        <p>Вся продукция соответствует ГОСТам и техническим регламентам</p>
+        
+        <div class="official-partners">
+            <span>Официально признано:</span>
+            <a href="https://www.asdg.ru" target="_blank">
+                Администрация Шарыповского района
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const phone = document.getElementById('phone').value;
+            
+            if (!/^[\d\+]{7,15}$/.test(phone)) {
+                alert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
+            
+            alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
